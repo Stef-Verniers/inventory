@@ -11,7 +11,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@auth/express": "^0.5.0",
     "@prisma/client": "^5.9.1",
+    "bcryptjs": "^2.4.3",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
