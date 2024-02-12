@@ -18,8 +18,8 @@
 <style>
     .login {
         background-color: white;
-        width: 30vw;
-        padding: 3rem 5rem;
+        width: 20vw;
+        padding: 3rem 3rem;
         border-radius: 12px;
     }
     h1 {
