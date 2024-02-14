@@ -23,7 +23,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && token !== 'undefined') {
       // User is authenticated, proceed to the route
       next();
     } else {

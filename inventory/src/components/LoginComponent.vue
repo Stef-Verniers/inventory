@@ -54,6 +54,14 @@ export default {
 </template>
 
 <style>
+    main {
+        height: 100vh;
+        width: 100vw;
+        background-color: #f9ffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .login {
         background-color: white;
         width: 20vw;

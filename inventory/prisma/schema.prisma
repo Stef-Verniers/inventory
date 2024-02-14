@@ -15,3 +15,18 @@ model User {
   name    String   @unique
   password String
 }
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name    String   @unique
+  description String
+}
+
+model Product {
+  id       Int      @id @default(autoincrement())
+  name    String   @unique
+  description String
+  price Float
+  categoryId Int
+  category Category @relation(fields: [categoryId], references: [id])
+}
