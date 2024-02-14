@@ -1,14 +1,52 @@
+<script>
+import { mapMutations } from "vuex";
+export default {
+    data: () => {
+        return {
+            email: "",
+            password: "",
+        };  
+    },
+    methods: {
+        ...mapMutations(["setUser", "setToken"]),
+        async login(e) {
+            e.preventDefault();
+            try {
+                const response = await fetch("http://localhost:3001/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: this.email,
+                        password: this.password,
+                    }),
+                });
+                const { user, token } = await response.json();
+                this.setUser(user);
+                this.setToken(token);
+                window.localStorage.setItem("token", JSON.stringify(token));
+                window.location.assign("/");
+            } catch (error) {
+                console.error("Error:", error);
+                // Handle error, show message, etc.
+            }
+        },
+    }   
+};
+</script>
+
 <template>
     <div class="login dshadow">
         <h1>Login</h1>
-        <form>
+        <form @submit.prevent="login">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <input v-model="email" type="email" id="email" name="email" />
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <input v-model="password" type="password" id="password" name="password" />
             </div>
             <button type="submit">Login</button>
         </form>
